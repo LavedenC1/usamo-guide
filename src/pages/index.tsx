@@ -311,7 +311,6 @@ export default function IndexPage({ path }): JSX.Element {
         </div>
       </div>
       <ActiveCardsHome/>
-      <TestimonialsSection/>
          {/* Section divider — glowing line */}
       <div
         className="pointer-events-none mx-auto w-2/3"
