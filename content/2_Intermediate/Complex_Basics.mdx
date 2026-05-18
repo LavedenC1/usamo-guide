@@ -6,19 +6,39 @@ description: Definitions, $i$ powers, the rectangular form, algebra with linear 
 prerequisites: []
 ---
 
-## Overview
+## Introduction to Imaginary Numbers
 
-Complex numbers extend the real line to a plane. Most AMC/AIME problems start
-with algebraic manipulation and then switch to geometry when convenient.
+When we learnt of squares and square roots in 5th, we surely would have wondered what is the square root of the negative numbers. If your teacher told you that those dont exist, He/She is both right and wrong at the same time! How? We shall answer that question here.
 
-Algebra with complex numbers is the same as real algebra, except you keep
-$i^2 = -1$ and collect real and imaginary parts.
+Solving the equation $x^2 + 1 = 0$ gives us x = $\pm \sqrt{-1}$
+Now, what is this $\sqrt{-1}$? That is called $i$ (iota - pronounced as "eye-OH-tuh")
 
-Conjugates turn complex expressions into real numbers and are essential for
-solving equations and simplifying fractions.
+If we multiply $i$ by a real number like 2 or $\pi$, we get a number like $2 i$ or $\pi i$, there is no way to simplify this product. Numbers like this,
+formed by multiplying $i$ by a real, are called pure imaginary numbers
 
-## Key Ideas
+If we multiply i by itself, we get $\sqrt{-1} * \sqrt{-1} = (\sqrt{-1}) ^ 2 = - 1$ as we would expect. But notice that if we try to combine the radicals and write $\sqrt{-1} * \sqrt{-1} = \sqrt{(- 1) ^ 2} = 1$ we will get the wrong answer. Manipulations like this are forbidden.
+If we keep taking powers of $i$ we get $i³ = ii² = i, i ^ 4 = i * i ^ 3 = i(- i) = - i ^ 2 = 1 i ^ 5 = i * i ^ 4 = i i ^ 6 = - 1$ etc. The powers of i go in cycles of $4: i, -1, -1, 1, 1, -1, -1, 1,$ etc.
 
+$\textbf{Complex number:}$ A number of the form $z = a + bi$ where $a,b \in \mathbb{R}$ and $i^2 = -1$.
+(Pro Tip: This includes all Real Numbers and Imaginary Numbers)
+
+## Algebra of Complex Numbers
+
+$\textbf{Addition/Subtraction:}$
+
+ $ (a+bi) \pm (c+di) = (a\pm c) + (b\pm d)i.$
+
+$\textbf{Multiplication:}$ (Just Simple Cross-Multiplication)
+
+ $(a+bi)(c+di) = (ac-bd) + (ad+bc)i.$ 
+
+$\textbf{Real/Imag parts:}$ 
+For $z=a+bi$, $\Re(z)=a$ and $\Im(z)=b$ (the imaginary part excludes the factor $i$).
+
+At this point, notice that isolating $\Re(z)$ and $\Im(z)$ early often simplifies equations and checks.
+
+
+## Ideas
 - $z = a + bi$ with $i^2 = -1$.
 - Powers of $i$ repeat every $4$.
 - Real part is $a$, imaginary part is $b$.
@@ -166,3 +186,5 @@ If $z=2-3i$, compute $z\overline{z}$.
 ## Practice Problems
 
 <Problems problems="practice" />
+
+
