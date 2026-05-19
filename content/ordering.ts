@@ -21,7 +21,7 @@ const MODULE_ORDERING: { [key in SectionID]: Chapter[] } = {
         'arithmetic-nt-basics',
         'fraction-decimal-percent',
         'proportional-reasoning',
-        'kinematics-rates',
+        'kinematics-and-rates',
         'estimation-bounding',
         'absolute-value-integers',
       ],

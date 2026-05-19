@@ -23,9 +23,9 @@ const siteUrl = (
 ).replace(/\/$/, '');
 
 const siteMetadata = {
-  title: `USAMO Guide`,
+  title: `USAMO Guide - Olympiad Mathematics Learning Platform`,
   siteName: `USAMO Guide`,
-  description: `Free, comprehensive preparation for AMC 8, AMC 10/12, AIME, and USAMO math. Learn with organized lessons, curated problem sets, and full solutions.`,
+  description: `Free, comprehensive preparation platform for AMC 8, AMC 10/12, AIME, and USAMO with lessons, problem sets, mock exams, and full solutions.`,
   author: `@usamoguide`,
   siteUrl,
   locale: `en_US`,

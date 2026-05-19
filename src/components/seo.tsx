@@ -86,9 +86,17 @@ function SEO({
   const normalizedPathname = normalizePathname(pathname);
   const canonical = normalizedPathname ? new URL(normalizedPathname, siteUrl).toString() : null;
   const normalizedCanonical = canonical || siteUrl;
+  const isHome = !normalizedPathname || normalizedPathname === '/';
   const metaRobots = noIndex
     ? 'noindex,nofollow,noarchive'
     : 'index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1';
+  const navItems = [
+    { name: 'Foundations', url: `${siteUrl}/foundations` },
+    { name: 'Problem Sets', url: `${siteUrl}/problems` },
+    { name: 'Contests', url: 'https://contests.usamoguide.com/' },
+    { name: 'Resources', url: `${siteUrl}/other-useful-resources` },
+    { name: 'About', url: `${siteUrl}/about` },
+  ];
   const structuredDataEntries: JsonLdEntry[] = [
     {
       '@context': 'https://schema.org',
@@ -122,6 +130,14 @@ function SEO({
         '@id': `${siteUrl}#website`,
       },
     },
+    ...(isHome
+      ? navItems.map(item => ({
+          '@context': 'https://schema.org',
+          '@type': 'SiteNavigationElement',
+          name: item.name,
+          url: item.url,
+        }))
+      : []),
     ...(Array.isArray(structuredData) ? structuredData : [structuredData]).filter(Boolean),
   ];
   return (

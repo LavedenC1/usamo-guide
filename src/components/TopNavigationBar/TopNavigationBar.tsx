@@ -8,6 +8,7 @@ import {
   ChevronDownIcon,
   CogIcon,
   ExternalLinkIcon,
+  InformationCircleIcon,
   LoginIcon,
   LogoutIcon,
   PresentationChartLineIcon,
@@ -256,6 +257,12 @@ export default function TopNavigationBar({
                   </PopoverPanel>
                 </Popover>
                 <Link
+                  to="/about"
+                  className="dark:text-dark-high-emphasis inline-flex items-center border-b-2 border-transparent px-1 text-base leading-6 font-medium text-gray-500 transition hover:border-gray-300 hover:text-gray-900 focus:border-gray-300 focus:text-gray-900 focus:outline-hidden dark:hover:border-gray-500 dark:focus:border-gray-500"
+                >
+                  About
+                </Link>
+                <Link
                   to="/contact-us"
                   className="dark:text-dark-high-emphasis inline-flex items-center border-b-2 border-transparent px-1 text-base leading-6 font-medium text-gray-500 transition hover:border-gray-300 hover:text-gray-900 focus:border-gray-300 focus:text-gray-900 focus:outline-hidden dark:hover:border-gray-500 dark:focus:border-gray-500"
                 >
@@ -467,6 +474,18 @@ export default function TopNavigationBar({
                   />
                   <span className="ml-3 text-base font-medium text-gray-700 dark:text-gray-300">
                     Contact Us
+                  </span>
+                </Link>
+                <Link
+                  to="/about"
+                  className="group -m-3 flex items-center rounded-md p-3 hover:bg-gray-100 dark:hover:bg-gray-700"
+                >
+                  <InformationCircleIcon
+                    className="float-left h-6 w-6 text-gray-600 dark:group-hover:text-gray-400"
+                    aria-hidden="true"
+                  />
+                  <span className="ml-3 text-base font-medium text-gray-700 dark:text-gray-300">
+                    About
                   </span>
                 </Link>
                 <Link
