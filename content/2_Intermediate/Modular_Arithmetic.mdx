@@ -1,107 +1,548 @@
 ---
 id: modular-arithmetic
 title: Modular Arithmetic
-author: Lalith 
-description: A powerful tool useful in solving problems involving remainders and divisibility.
-prerequisites: ["Basic knowledge of divisibility"]
+author: USAMO Guide Team
+description: Learn how congruences, residues, and modular techniques simplify olympiad problems involving divisibility, remainders, and cyclic behaviour.
+prerequisites: []
 ---
 
-# Modular Arithmetic
+## Overview
 
-## Introduction
+Modular arithmetic is one of the most important tools in olympiad mathematics.
+It allows us to work with remainders instead of entire numbers, often turning
+complicated expressions into manageable computations.
 
-Throughout practicing many problems, you may have encountered problems of the following type:
+Many problems involving:
+- Divisibility
+- Last digits
+- Cyclic patterns
+- Parity
+- Residues
+- Number theoretic equations
+and more become a lot simpler when viewed modulo some integer.
+
+The main idea is that two integers are considered equivalent if they leave the same remainder when divided by a fixed modulus.
+
+## Motivation
+
+Suppose we want to determine the last digit of
+
+$$
+7^{2026}.
+$$
+
+Computing the entire number is impossible by hand. However, the last digit of a
+number depends only on its remainder modulo $10$. As such, we can work modulo $10$:
+
+$$
+7^1 \equiv 7 \pmod{10}
+$$
+
+$$
+7^2 = 49 \equiv 9 \pmod{10}
+$$
+
+$$
+7^3 \equiv (7)(9) = 63 \equiv 3 \pmod{10}
+$$
+
+$$
+7^4 \equiv (7)(3) = 21 \equiv 1 \pmod{10}
+$$
+
+The powers repeat with period $4$:
+
+$$
+7,9,3,1,7,9,3,1,\ldots
+$$
+
+Since
+
+$$
+2026 \equiv 2 \pmod{4},
+$$
+
+the last digit matches that of $7^2$, namely $9$.
+
+Instead of handling a very large number directly, modular arithmetic reduced the problem to studying a short repeating cycle.
+
+## Congruences
+
+### Definition
+
+Let $m$ be a positive integer. We say that
+
+$$
+a \equiv b \pmod{m}
+$$
+
+if $a$ and $b$ leave the same remainder when divided by $m$.
+
+Equivalently,
+
+$$
+m \mid (a-b).
+$$
+
+In words, $a-b$ is divisible by $m$.
+
+### Examples
+
+$$
+17 \equiv 5 \pmod{12}
+$$
+
+because $17-5=12$ is divisible by $12$.
+
+$$
+38 \equiv 2 \pmod{9}
+$$
+
+because $38-2=36$ is divisible by $9$.
+
+Negative numbers also work:
+
+$$
+-3 \equiv 4 \pmod{7}
+$$
+
+since
+
+$$
+-3-4=-7.
+$$
+
+## Residue Classes
+
+Modulo $m$, every integer belongs to one of the residue classes
+
+$$
+0,1,2,\ldots,m-1.
+$$
+
+For example, modulo $5$:
+
+- $12 \equiv 2 \pmod{5}$
+- $27 \equiv 2 \pmod{5}$
+- $102 \equiv 2 \pmod{5}$
+
+so all three numbers belong to the same residue class.
+
+You can think of modular arithmetic as a number system that 'wraps around' after reaching the modulus.
+
+For instance, modulo $12$ behaves like a clock
+
+- $10+5 \equiv 3 \pmod{12}$
+- $11+4 \equiv 3 \pmod{12}$
+
+because after passing $12$, we begin again at $0$.
+
+## Basic Properties
+
+If
+
+$$
+a \equiv b \pmod{m}
+$$
+
+and
+
+$$
+c \equiv d \pmod{m},
+$$
+
+then:
+
+### Addition
+
+$$
+a+c \equiv b+d \pmod{m}
+$$
+
+### Subtraction
+
+$$
+a-c \equiv b-d \pmod{m}
+$$
+
+### Multiplication
+
+$$
+ac \equiv bd \pmod{m}
+$$
+
+### Powers
+
+$$
+a^k \equiv b^k \pmod{m}
+$$
+
+for all positive integers $k$.
+
+These rules allow us to simplify expressions significantly before computing.
+
+## Important Warning: Division
+
+In ordinary arithmetic, we can cancel common factors freely:
+
+$$
+6x = 6y \implies x=y.
+$$
+
+In modular arithmetic, cancellation requires more thought.
+
+For example,
+
+$$
+(2)(1) \equiv (2)(4) \pmod{6}
+$$
+
+since both sides equal $2$ modulo $6$.
+
+However,
+
+$$
+1 \not\equiv 4 \pmod{6}.
+$$
+
+We can only divide by a number if it is coprime to the modulus.
+
+### Cancellation Rule
+
+If
+
+$$
+ac \equiv bc \pmod{m}
+$$
+
+and
+
+$$
+\gcd(c,m)=1,
+$$
+
+then
+
+$$
+a \equiv b \pmod{m}.
+$$
+
+This idea appears frequently in olympiad problems.
+
+## Modular Inverses
+
+Closely related to cancellation is the idea of a modular inverse. We say that
+$a$ has a multiplicative inverse modulo $m$ if there exists an integer $b$
+such that $ab \equiv 1 \pmod{m}$. This inverse exists if and only if
+$\gcd(a,m)=1$, a fact following from Bézout's identity. When it does exist, dividing by $a$ modulo $m$ means
+multiplying by $b$.
+
+## Working with Large Numbers
+
+A major advantage of modular arithmetic is that we can reduce numbers at every
+step.
+
+For example,
+
+$$
+13^{100} \pmod{5}.
+$$
+
+Since
+
+$$
+13 \equiv 3 \pmod{5},
+$$
+
+we instead compute
+
+$$
+3^{100} \pmod{5}.
+$$
+
+Now notice:
+
+$$
+3^2=9 \equiv -1 \pmod{5}.
+$$
+
+Therefore
+
+$$
+3^{100} = (3^2)^{50} \equiv (-1)^{50}=1 \pmod{5}.
+$$
+
+Hence
+
+$$
+13^{100} \equiv 1 \pmod{5}.
+$$
+
+## Cyclicity
+
+Powers modulo $m$ often repeat in cycles. Since there are only finitely many
+possible residues modulo $m$, repeated multiplication must eventually produce a repeated residue.
+
+### Example
+
+Find the last digit of
+
+$$
+2^{100}.
+$$
+
+The powers of $2$ modulo $10$ are:
+
+$$
+2,4,8,6,2,4,8,6,\ldots
+$$
+
+The cycle length is $4$.
+
+Since
+
+$$
+100 \equiv 0 \pmod{4},
+$$
+
+the last digit corresponds to the fourth term in the cycle:
+
+$$
+6.
+$$
+
+Recognising cyclic behaviour is one of the most common uses of modular
+arithmetic in AMC and AIME problems.
+
+## Divisibility Tests
+
+Many familiar divisibility rules come naturally from modular arithmetic.
+
+Let
+
+$$
+N = \overline{a_1a_2\cdots a_n}
+$$
+
+be a positive integer.
+
+Since
+
+$$
+N = a_1(10^{n-1})+a_2(10^{n-2})+\cdots+a_n,
+$$
+
+we can analyse $N$ modulo different integers.
+
+### Divisibility by $2$
+
+Because
+
+$$
+10 \equiv 0 \pmod{2},
+$$
+
+all powers of $10$ beyond the units digit disappear modulo $2$.
+
+So only the final digit matters.
+
+### Divisibility by $3$
+
+Since
+
+$$
+10 \equiv 1 \pmod{3},
+$$
+
+we have
+
+$$
+10^k \equiv 1 \pmod{3}
+$$
+
+for all $k$. Therefore,
+
+$$
+N \equiv a_1+a_2+\cdots+a_n \pmod{3}.
+$$
+
+Hence a number is divisible by $3$ when its digit sum is divisible
+by $3$.
+
+### Divisibility by $9$
+
+The same argument works because
+
+$$
+10 \equiv 1 \pmod{9}.
+$$
+
+### Divisibility by $11$
+
+Since
+
+$$
+10 \equiv -1 \pmod{11},
+$$
+
+we get
+
+$$
+N \equiv a_1-a_2+a_3-a_4+\cdots \pmod{11}.
+$$
+
+As such, a number is divisible by $11$ when the alternating digit sum is
+a multiple of $11$.
+
+## Solving Congruences
+
+### Linear Congruences
+
+Consider
+
+$$
+3x \equiv 5 \pmod{7}.
+$$
+
+We want a multiplicative inverse of $3$ modulo $7$.
+
+Since
+
+$$
+(3)(5) = 15 \equiv 1 \pmod{7},
+$$
+
+multiplying both sides by $5$ gives
+
+$$
+x \equiv 25 \equiv 4 \pmod{7}.
+$$
+
+Thus
+
+$$
+x \equiv 4 \pmod{7}.
+$$
+
+## Key Olympiad Insight
+
+Modular arithmetic is powerful because it allows us to:
+- Eliminate impossible cases
+- Reduce very large computations
+- Classify numbers into residue classes
+- Detect patterns and cycles
+- Prove divisibility or non divisibility.
+
+In many olympiad problems, choosing the correct modulus is the main challenge.
+
+A good heuristic is:
+- Use modulo $2$ for parity
+- Modulo $10$ for last digits
+- Modulo $3$ or $9$ for digit sums
+- Modulo primes for divisibility and residues
+- Modulo small numbers to simplify expressions
+
+## Worked Examples
+
+### Example 1
 
 > Find the remainder when $3^{2026}$ is divided by $7$.
 
-There exists an entire branch of mathematics centered around tackling such problems involving remainders, divisibility, etc. termed Modular Arithmetic.
+The powers of $3$ modulo $7$ cycle:
 
+$$
+3,2,6,4,5,1.
+$$
 
-## Terminology
+The cycle length is $6$.
 
-- $a \equiv b \pmod{m}$ (pronounced, "$a$ is congruent to $b$ modulo $m$"): $a$ has the remainder, $b$, when divided by $m$.
-- **Residue Classes**:  Modular arithmetic groups all integers into a finite set of "residues" based on their remainders. In modulo 5, every integer is essentially reduced to one of five values: $\{0, 1, 2, 3, 4\}$
+Since
 
-## Core idea
+$$
+2026 \equiv 4 \pmod{6},
+$$
 
-The core idea behind modular arithmetic is remainders, and performing operaions on them. For example, we know that $43$ and $46$ have the same remainder when divided by $3$. Now observe that $43=1+3(14)$ and $46=1+3(15)$(This is the euclidean division lemma which will be discussed later), so $3$ divides $46-43$. And based on the format we have used to represent them, this is true for any two numbers which have the same remainder when divided by a third number.
+we get
 
-Thus we can say $46$ and $43$ are similar or **equivalent** in some way under a certain condition. And this is where modular arithmetic comes into the picture
+$$
+3^{2026} \equiv 3^4 \equiv 4 \pmod{7}.
+$$
 
-Definition: We say that $a\equiv b\;(mod\:d)$ if $d\mid{a-b}$
+Hence the remainder is $4$.
 
-Even though saying that a and b has the same remainder when divided by d is more intuitive and usually comfortable, the idea of $d\mid{a-b}$ and the skill fo identifying it is crucial in the AMC 10/12.
+### Example 2
 
+> Prove that no perfect square leaves remainder $2$ when divided by $4$.
 
-## Operations:
+Every integer is congruent to one of $0,1,2,3$ modulo $4$.
 
-- If $a \equiv b \pmod{m}$ and $p \equiv q \pmod{m}$, then for all positive integers $c$:
+Squaring each possibility gives:
 
-1. $a + c \equiv b + c \pmod{m}$
-2. $a - c \equiv b - c \pmod{m}$
-3. $ac \equiv bc \pmod{m}$
-4. $a^{c} \equiv b^{c} \pmod{m}$
-5. $a + p \equiv b + q \pmod{m}$
-6. $ap \equiv bq \pmod{m}$
+$$
+0^2 \equiv 0 \pmod{4}
+$$
 
-## Tips:
+$$
+1^2 \equiv 1 \pmod{4}
+$$
 
-- When considering divisibility, move all terms to one side in a congruence equation. For instance, if: $a \equiv b \pmod{m}$, then:
-    $a - b \equiv 0 \pmod{m}$. This tells us that $a - b$ is divisible (if $x \equiv 0 \pmod{y}$, $x$ is divisible by $y$) by $m$ which is a useful fact.
-- Given an $n$-digit positive integer $a_1, a_2, \ldots, a_n$, we can 'expand' it to get: $a_1 \cdot 10^{n-1} + \cdots + a_n$. Now we can treat each term separately and consider its modulo some remainder, and sum all of them at the end. This is how divisiblity tricks are obtained!
+$$
+2^2 \equiv 0 \pmod{4}
+$$
 
-## Divisibility Tricks
+$$
+3^2 \equiv 1 \pmod{4}.
+$$
 
-For an $n$-digit positive integer $\overline{a_1 a_2 \ldots a_n} = a_1 \cdot 10^{n-1} + \cdots + a_n$:
+Therefore every square is congruent to either $0$ or $1$ modulo $4$, never $2$.
 
-- **Divisible by 2** if $a_n \equiv 0 \pmod{2}$, i.e. the last digit is even.
-- **Divisible by 5** if $a_n \equiv 0 \pmod{5}$, i.e. the last digit is $0$ or $5$.
-- **Divisible by 4** if the last two digits form a number divisible by $4$, since $100 \equiv 0 \pmod{4}$.
-- **Divisible by 3** if $a_1 + a_2 + \cdots + a_n \equiv 0 \pmod{3}$, i.e. the sum of digits is divisible by $3$.
-- **Divisible by 9** if $a_1 + a_2 + \cdots + a_n \equiv 0 \pmod{9}$, i.e. the sum of digits is divisible by $9$.
-- **Divisible by 11** if $a_1 - a_2 + a_3 - \cdots \equiv 0 \pmod{11}$, i.e. the alternating digit sum is divisible by $11$.
+### Example 3
 
-## The Last Digit
+> Determine the last two digits of $7^{222}$.
 
-Suppose you are solving a problem involving very large numbers, and you are asked to compute the last digit of the result. For instance:
+We work modulo $100$.
 
-> Find the last digit of when $45^{45}$
+Observe:
 
-Instead of dealing with the entire number $45$, we should only deal with its remainder modulo $10$, i.e, $5$. Hence, the problem reduces to:
+$$
+7^4 = 2401 \equiv 1 \pmod{100}.
+$$
 
-> Find the last digit of when $5^{45}$
+Then
 
-which is a lot easier as the last digit of any positive integral power of $5$ is always $5$.
+$$
+7^{222} = (7^4)^{55}(7^2).
+$$
 
-> ## Focus Problem:
->
-**Solution:**
+Therefore,
 
-Let $N = \overline{abc} = 100a + 10b + c$ where $a \in \{1, \ldots, 9\}$ and $b, c \in \{0, \ldots, 9\}$.
+$$
+7^{222} \equiv (1^{55})(49) \equiv 49 \pmod{100}.
+$$
 
-The reversal of $N$ is $\overline{cba} = 100c + 10b + a$.
+## Common Pitfalls
+- Forgetting that congruence means equality of remainders, not ordinary
+  equality.
+- Cancelling factors modulo $m$ when the factor is not coprime to $m$.
+- Reducing incorrectly after exponentiation.
+- Using a modulus that does not actually simplify the problem.
+- Assuming patterns continue without proof.
 
-**Condition 1:** $N \equiv 0 \pmod{7}$
+## Strategy Tips
+- Reduce numbers modulo $m$ as early as possible.
+- Search for cycles in powers.
+- Test small cases to identify residue patterns.
+- Use negative residues when convenient:
 
-**Condition 2:** $\overline{cba} \equiv 0 \pmod{5}$
+$$
+19 \equiv -1 \pmod{10}
+$$
 
-Since $\overline{cba}$ is divisible by $5$, its last digit $a$ must satisfy $a \equiv 0 \pmod{5}$, so $a \in \{5\}$ (since $a \neq 0$, as $N$ is a three-digit number, and $a = 10$ is impossible).
+is often easier to work with than $19 \equiv 9 \pmod{10}$.
 
-So $a = 5$, meaning $N = 500 + 10b + c$.
+- When proving impossibility, try looking at all residue classes modulo a small
+  integer.
 
-**Applying Condition 1:**
+## Practice Problems
 
-$$500 + 10b + c \equiv 0 \pmod{7}$$
-
-Since $500 = 71 \cdot 7 + 3$, we have $500 \equiv 3 \pmod{7}$, so:
-
-$$10b + c \equiv -3 \equiv 4 \pmod{7}$$
-
-We need to count pairs $(b, c)$ with $b \in \{0, \ldots, 9\}$, $c \in \{0, \ldots, 9\}$ such that $10b + c \equiv 4 \pmod 7$.
->
-> Note that $10b + c$ ranges over all integers from $0$ to $99$. Among any $7$ consecutive integers, exactly one is congruent to $4 \pmod{7}$. Since $100 = 14 \cdot 7 + 2$, the values $0, 1, \ldots, 99$ contain:
-> - $14$ complete cycles of $7$, giving $14$ solutions.
-> - A partial cycle $\{0, 1\}$ (i.e., $10b + c \in \{98, 99\}$), neither of which is $\equiv 4 \pmod{7}$.
->
-> Therefore there are $\boxed{14}$ three-digit integers satisfying both conditions.
-
+<Problems problems="practice" />
