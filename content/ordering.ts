@@ -20,11 +20,12 @@ const MODULE_ORDERING: { [key in SectionID]: Chapter[] } = {
       items: [
         'arithmetic-nt-basics',
         'fraction-decimal-percent',
-        'Fractions_Percentages_Proportions_p1',
-        'Fractions_Percentages_Proportions_p2',
+        'fractions_percentages_proportions_p1',
+        'fractions_percentages_proportions_p2',
         'kinematics-and-rates',
         'estimation-bounding',
-        'absolute-value-integers',
+        'absolute-value-integers_p1',
+        'absolute-value-integers_p2',
       ],
     },
     {
@@ -48,13 +49,11 @@ const MODULE_ORDERING: { [key in SectionID]: Chapter[] } = {
         'defined-operations',
         'arithmetic-sequences',
         'exponent-rules',
-        'polynomial-factoring-identities',
+        'polynomial-factoring-and-identities',
         'quadratic-identities',
         'cubic-factorizations',
         'sfft-factoring',
         'extremal-principle',
-
-        // shifted from old content
         'quadratic-formula',
         'substitution-techniques',
         'geometric-sequences',
@@ -137,9 +136,11 @@ const MODULE_ORDERING: { [key in SectionID]: Chapter[] } = {
         'symmetric-polynomials',
         'symmetric-identity',
         'sum-formulas-powers',
-
+        'function-basics-p1',
+        'function-basics-p2',
         // promoted from foundations
         'vieta-formulas',
+        'vieta-jumping',
         'polynomial-manipulations',
         'function-basics',
         'telescoping',
@@ -171,7 +172,7 @@ const MODULE_ORDERING: { [key in SectionID]: Chapter[] } = {
         'modular-arithmetic',
         'number-theory-intermediate',
         'chinese-remainder-theorem',
-
+        'euler-totient-theorem',
         // promoted from foundations
         'chicken-mcnugget',
       ],
@@ -186,7 +187,7 @@ const MODULE_ORDERING: { [key in SectionID]: Chapter[] } = {
         'tangent-lines',
         'tangent-circles',
         'arc-and-chord',
-
+        'descartes-theorem',
         // promoted from foundations
         'triangle-medians-centroid',
         'angle-bisectors',
