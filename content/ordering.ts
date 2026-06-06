@@ -56,7 +56,6 @@ const MODULE_ORDERING: { [key in SectionID]: Chapter[] } = {
         'quadratic-formula',
         'substitution-techniques',
         'geometric-sequences',
-        'telescoping-basics',
       ],
     },
     {
