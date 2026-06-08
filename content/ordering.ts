@@ -134,6 +134,8 @@ const MODULE_ORDERING: { [key in SectionID]: Chapter[] } = {
         'polynomial-manipulations',
         'function-basics',
         'telescoping',
+        'binomial-theorem-p1',
+        'binomial-theorem-p2'
       ],
     },
     {
@@ -216,8 +218,8 @@ const MODULE_ORDERING: { [key in SectionID]: Chapter[] } = {
       description: 'Identities, equations, and unit circle applications.',
       items: [
         'trig-unit-circle',
-        'trig-angle-addition',
-        'trig-product-sum',
+        'trigonometric-identities-and-series-p1',
+        'trigonometric-identities-and-series-p2',
         'trig-equations',
         'trig-inverse-functions',
       ],
@@ -326,7 +328,10 @@ const MODULE_ORDERING: { [key in SectionID]: Chapter[] } = {
     },
     {
       name: 'Olympiad Number Theory',
-      items: ['olympiad-number-theory', 'vieta-root-jumping'],
+      items: ['olympiad-number-theory',
+        'lifting-the-exponent-lemma-p1',
+        'lifting-the-exponent-lemma-p2', 
+        'vieta-root-jumping'],
     },
     {
       name: 'Olympiad Geometry',
