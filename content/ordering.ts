@@ -68,7 +68,6 @@ const MODULE_ORDERING: { [key in SectionID]: Chapter[] } = {
         'right-triangles',
         'triangle-congruence-similarty',
         'special-quadrilaterals',
-        'circle-angles',
         'composite-figures-shaded-areas',
         'coordinate-geometry-basics',
         'triangle-types-properties',
